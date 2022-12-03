@@ -1,5 +1,6 @@
 package com.IFNTUNG.edu.pages;
 
+import com.IFNTUNG.edu.elements.CreateAccountPageElements;
 import com.IFNTUNG.edu.utils.ConfigurationReader;
 import com.IFNTUNG.edu.utils.StringUtils;
 import org.openqa.selenium.By;
@@ -7,6 +8,24 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class CreateAccountPage extends BasePage{
+    private By genderRadioButton = CreateAccountPageElements.getGenderRadioButton();
+    private By firstNameField = CreateAccountPageElements.getFirstNameField();
+    private By lastNameField = CreateAccountPageElements.getLastNameField();
+    private By dateOfBirth = CreateAccountPageElements.getDateOfBirth();
+    private By emailField = CreateAccountPageElements.getEmailField();
+    private By companyNameField = CreateAccountPageElements.getCompanyNameField();
+    private By streetAddressField = CreateAccountPageElements.getStreetAddressField();
+    private By postCodeField = CreateAccountPageElements.getPostCodeField();
+    private By cityField = CreateAccountPageElements.getCityField();
+    private By stateField = CreateAccountPageElements.getStateField();
+    private By selectCountryMenu = CreateAccountPageElements.getSelectCountryMenu();
+    private By ukraineOption = CreateAccountPageElements.getUkraineOption();
+    private By telephoneNumber = CreateAccountPageElements.getTelephoneNumber();
+    private By newsletterCheckbox = CreateAccountPageElements.getNewsletterCheckbox();
+    private By passwordField = CreateAccountPageElements.getPasswordField();
+    private By passwordFieldConfirmation = CreateAccountPageElements.getPasswordFieldConfirmation();
+    private By submitButton = CreateAccountPageElements.getSubmitButton();
+
     private final String USER_NAME = ConfigurationReader.get().getUserName();
     private final String USER_LAST_NAME = ConfigurationReader.get().getUserLastName();
     private final String USER_BIRTHDAY = ConfigurationReader.get().getUserBirthDay();
@@ -20,83 +39,85 @@ public class CreateAccountPage extends BasePage{
     private final String TELEPHONE_NUMBER = ConfigurationReader.get().getTelephoneNumber();
     private final String PASSWORD = ConfigurationReader.get().getPassword();
 
+
     public CreateAccountPage(WebDriver driver) {
         super(driver);
     }
-    public CreateAccountPage selectGender(By genderRadioButton) {
+
+    public CreateAccountPage selectGender() {
         driver.findElement(genderRadioButton).click();
         return this;
     }
 
-    public CreateAccountPage enterFirstName(By firstNameField) {
+    public CreateAccountPage enterFirstName() {
         driver.findElement(firstNameField).sendKeys(USER_NAME);
         return this;
     }
 
-    public CreateAccountPage enterLastName(By lastNameField) {
+    public CreateAccountPage enterLastName() {
         driver.findElement(lastNameField).sendKeys(USER_LAST_NAME);
         return this;
     }
 
-    public CreateAccountPage enterDateOfBirth(By dateOfBirth) {
+    public CreateAccountPage enterDateOfBirth() {
         driver.findElement(dateOfBirth).sendKeys(USER_BIRTHDAY);
         driver.findElement(dateOfBirth).sendKeys(Keys.RETURN);
         return this;
     }
 
-    public CreateAccountPage enterUserEmail(By emailField) {
+    public CreateAccountPage enterUserEmail() {
         driver.findElement(emailField).sendKeys(USER_EMAIL);
         return this;
     }
 
-    public CreateAccountPage enterCompanyName(By companyNameField) {
+    public CreateAccountPage enterCompanyName() {
         driver.findElement(companyNameField).sendKeys(USER_COMPANY);
         return this;
     }
 
-    public CreateAccountPage enterStreetAddress(By streetAddressField) {
+    public CreateAccountPage enterStreetAddress() {
         driver.findElement(streetAddressField).sendKeys(USER_STREET);
         return this;
     }
 
-    public CreateAccountPage enterPostCode(By postCodeField) {
+    public CreateAccountPage enterPostCode() {
         driver.findElement(postCodeField).sendKeys(USER_POSTCODE);
         return this;
     }
 
-    public CreateAccountPage enterUserCity(By cityField) {
+    public CreateAccountPage enterUserCity() {
         driver.findElement(cityField).sendKeys(USER_CITY);
         return this;
     }
 
-    public CreateAccountPage enterUserState(By stateField) {
+    public CreateAccountPage enterUserState() {
         driver.findElement(stateField).sendKeys(USER_STATE);
         return this;
     }
 
-    public CreateAccountPage selectCountry(By selectCountryMenu, By ukraineOption) {
+    public CreateAccountPage selectCountry() {
         driver.findElement(selectCountryMenu).click();
         driver.findElement(ukraineOption).click();
         return this;
     }
 
-    public CreateAccountPage enterTelephoneNumber(By telephoneNumber) {
+    public CreateAccountPage enterTelephoneNumber() {
         driver.findElement(telephoneNumber).sendKeys(TELEPHONE_NUMBER);
         return this;
     }
 
-    public CreateAccountPage checkNewsLetterCheckBox(By newsletterCheckbox) {
+    public CreateAccountPage checkNewsLetterCheckBox() {
         driver.findElement(newsletterCheckbox).click();
         return this;
     }
 
-    public CreateAccountPage createPassword(By passwordField, By passwordFieldConfirmation) {
+    public CreateAccountPage createPassword() {
         driver.findElement(passwordField).sendKeys(PASSWORD);
         driver.findElement(passwordFieldConfirmation).sendKeys(PASSWORD);
         return this;
     }
 
-    public AccountSuccessPage submitEnteredInformation(By submitButton) {
+    public AccountSuccessPage submitEnteredInformation() {
         driver.findElement(submitButton).click();
         return new AccountSuccessPage(driver);
     }
