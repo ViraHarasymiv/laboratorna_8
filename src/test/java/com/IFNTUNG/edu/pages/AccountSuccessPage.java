@@ -8,6 +8,7 @@ public class AccountSuccessPage extends BasePage{
     public AccountSuccessPage(WebDriver driver) {
         super(driver);
     }
+
     public String getActualMessage(By actualMessage){
         waitForElementToAppear(actualMessage);
         return driver.findElement(actualMessage).getText();
